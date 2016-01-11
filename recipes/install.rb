@@ -38,7 +38,7 @@ elsif install['method'] == "deb"
     # same as the version we want to install. This allows us to do upgrades just by changing
     # an attribute.
     not_if "test `dpkg-query -W --showformat='${Version}' remote-syslog2:i386` = #{install['version']}"
-    notifies :install, "dpkg_page[remote_syslog2]", :immediately
+    notifies :install, "dpkg_package[remote_syslog2]", :immediately
   end
 
 
