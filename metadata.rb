@@ -4,7 +4,7 @@ maintainer_email 'jeff.way@me.com'
 license          'Apache 2.0'
 description      'Installs/Configures remote_syslog2'
 long_description 'Installs/Configures remote_syslog2'
-version          '0.3.0'
+version          '0.3.1'
 
 supports 'ubuntu'
 
