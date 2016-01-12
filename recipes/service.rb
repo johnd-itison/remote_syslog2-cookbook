@@ -3,7 +3,7 @@ template '/etc/init.d/remote_syslog2' do
   mode '0755'
 end
 
-service 'remote_syslog2' do
+service 'remote_syslog' do
   supports restart: true, status: true
   action [:start, :enable]
 end
