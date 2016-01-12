@@ -1,4 +1,4 @@
-if node['install']['method'] == "source"
+if node['remote_syslog2']['install']['method'] == "source"
   template '/etc/init.d/remote_syslog2' do
     source 'remote_syslog2.erb'
     mode '0755'
