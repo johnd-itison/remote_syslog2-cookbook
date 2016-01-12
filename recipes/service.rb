@@ -7,7 +7,7 @@ else
   # Clean up old 'source'/'tarball' type installations.
   file "/etc/init.d/remote_syslog2" do
     action :delete
-    only_if { ::File.exists?("/etc/init.d/remote_syslog2" }
+    only_if { ::File.exists?("/etc/init.d/remote_syslog2") }
   end
 end
 
