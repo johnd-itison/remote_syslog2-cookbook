@@ -19,8 +19,14 @@ end
 
 default['remote_syslog2']['install']['method'] = install_method
 
+# The deb package uses a different and hardcoded config filename.
+if install_method == "deb"
+  default['remote_syslog2']['config_file'] = '/etc/log_files.yml'
+else
+  default['remote_syslog2']['config_file'] = '/etc/remote_syslog2.yml'
+end
+
 # These attributes probably shouldn't be changed unless they specifically need to be
-default['remote_syslog2']['config_file'] = '/etc/remote_syslog2.yml'
 default['remote_syslog2']['pid_dir'] = '/var/run'
 default['remote_syslog2']['install']['version'] = '0.16'
 default['remote_syslog2']['install']['download_tarball'] = "https://github.com/papertrail/remote_syslog2/releases/download/v#{node['remote_syslog2']['install']['version']}/remote_syslog_linux_386.tar.gz"
