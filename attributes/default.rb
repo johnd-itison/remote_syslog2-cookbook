@@ -26,11 +26,18 @@ else
   default['remote_syslog2']['config_file'] = '/etc/remote_syslog2.yml'
 end
 
+# Get 32/64 bit platform correct
+if node[:kernel][:machine] == "x86_64"
+  platform = "amd64"
+else
+  platform = "i386"
+end
+
 # These attributes probably shouldn't be changed unless they specifically need to be
 default['remote_syslog2']['pid_dir'] = '/var/run'
 default['remote_syslog2']['install']['version'] = '0.16'
-default['remote_syslog2']['install']['download_tarball'] = "https://github.com/papertrail/remote_syslog2/releases/download/v#{node['remote_syslog2']['install']['version']}/remote_syslog_linux_386.tar.gz"
-default['remote_syslog2']['install']['download_deb'] = "https://github.com/papertrail/remote_syslog2/releases/download/v#{node['remote_syslog2']['install']['version']}-beta-pkgs/remote-syslog2_#{node['remote_syslog2']['install']['version']}_i386.deb"
+default['remote_syslog2']['install']['download_tarball'] = "https://github.com/papertrail/remote_syslog2/releases/download/v#{node['remote_syslog2']['install']['version']}/remote_syslog_linux_#{platform}.tar.gz"
+default['remote_syslog2']['install']['download_deb'] = "https://github.com/papertrail/remote_syslog2/releases/download/v#{node['remote_syslog2']['install']['version']}-beta-pkgs/remote-syslog2_#{node['remote_syslog2']['install']['version']}_#{platform}.deb"
 default['remote_syslog2']['install']['download_tarball_path'] = '/tmp/remote_syslog.tar.gz'
 default['remote_syslog2']['install']['download_deb_path'] = '/tmp/remote_syslog2.deb'
 default['remote_syslog2']['install']['extract_path'] = '/tmp'
